@@ -1,0 +1,36 @@
+#target = "aarch64-unknown-linux-gnu"
+
+[target.aarch64-unknown-linux-gnu]
+#linker = "/opt/toolchains/crosstools-arm-gcc-5.3-linux-4.1-glibc-2.22-binutils-2.25/usr/bin/aarch64-buildroot-linux-gnu-gcc"
+linker = "/home/cmt2/proj/rk3588_sdk/buildroot/output/firefly_rk3588/host/bin/aarch64-buildroot-linux-gnu-gcc"
+runner = "./target-runner.sh"
+rustflags = [
+    "-C", "link-arg=-B/usr/local/bin/mold"
+]
+
+strip = { path = "/home/cmt2/proj/rk3588_sdk/buildroot/output/firefly_rk3588/host/bin/aarch64-buildroot-linux-gnu-strip" }
+#strip = { path = "/opt/toolchains/crosstools-arm-gcc-5.3-linux-4.1-glibc-2.22-binutils-2.25/usr/bin/aarch64-buildroot-linux-gnu-strip" }
+
+[env]
+CROSS_COMPILE = "/home/cmt2/proj/rk3588_sdk/buildroot/output/firefly_rk3588/host/bin/aarch64-buildroot-linux-gnu-"
+#CROSS_COMPILE = "/opt/toolchains/crosstools-arm-gcc-5.3-linux-4.1-glibc-2.22-binutils-2.25/usr/bin/aarch64-buildroot-linux-gnu-"
+#PKG_CONFIG_PATH = "/home/cmt2/proj/rk3588_sdk/buildroot/output/firefly_rk3588/host/aarch64-buildroot-linux-gnu/sysroot/lib/pkgconfig"
+#PKG_CONFIG_PATH = "/home/cmt2/proj/rk3588_sdk/buildroot/output/firefly_rk3588/staging/usr/lib/pkgconfig"
+#PKG_CONFIG_PATH = "/usr/lib/x86_64-linux-gnu/pkgconfig"
+PKG_CONFIG_SYSROOT_DIR = "/home/cmt2/proj/rk3588_sdk/buildroot/output/firefly_rk3588/host/aarch64-buildroot-linux-gnu/sysroot/lib/pkgconfig"
+#PKG_CONFIG_SYSROOT_DIR = "/"
+
+RKAIQ_INCLUDE_DIR = "/home/cmt2/proj/rk3588_sdk/buildroot/output/firefly_rk3588/staging/usr/include/rkaiq"
+TARGET_SYSROOT_DIR = "/home/cmt2/proj/rk3588_sdk/buildroot/output/firefly_rk3588/host/aarch64-buildroot-linux-gnu/sysroot/lib/pkgconfig"
+#RKAIQ_INCLUDE_DIR = "/usr/include/rkaiq"
+#TARGET_SYSROOT_DIR = "/"
+
+TARGET_SSH_HOST = "192.168.18.76"
+TARGET_SSH_PSWD = "open"
+
+[http]
+# proxy = "http://192.168.2.11:8080"
+
+[net]
+git-fetch-with-cli = true
+# offline = true
